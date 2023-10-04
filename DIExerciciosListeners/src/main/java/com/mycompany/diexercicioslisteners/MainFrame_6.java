@@ -4,33 +4,35 @@
  */
 package com.mycompany.diexercicioslisteners;
 
-import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.HeadlessException;
+import java.awt.ScrollPane;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import javax.swing.WindowConstants;
 
-public class MainFrame extends JFrame {
+public class MainFrame_6 extends JFrame {
     // Declarar os compoñentes como variables privadas de instancia
 
-    private JButton aceptarButton;
+    private JTextArea campoTextArea;
+    private JScrollPane campoScroll;
 
-    public MainFrame() throws HeadlessException {
+    public MainFrame_6() throws HeadlessException {
         super("Ola mundo!");
         // Establecer o Layout
-        setLayout(new BorderLayout());
-        // Inicializar os compoñentes
-        aceptarButton = new JButton("Aceptar");
-        aceptarButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent ae) {
-                System.exit(0);
-            }
-        });
+        setLayout(new FlowLayout());
 
-        add(aceptarButton, BorderLayout.PAGE_END);
+
+        campoTextArea = new JTextArea(5, 20);
+        campoTextArea.setLineWrap(true);
+        campoTextArea.setWrapStyleWord(true);
+        campoScroll = new JScrollPane(campoTextArea);
+        add(campoScroll);
+
 
 
         setSize(600, 500);

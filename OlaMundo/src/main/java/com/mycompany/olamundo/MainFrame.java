@@ -18,9 +18,9 @@ import javax.swing.*;
 public class MainFrame extends JFrame {
     // Declarar os compoñentes como variables privadas de instancia
 
-    private JTextArea textArea;
-    private JButton aceptarButton;
-    private JLabel etiquetaLabel;
+    private final JTextArea textArea;
+    private final JButton aceptarButton;
+    private final JLabel etiquetaLabel;
 
     public MainFrame() throws HeadlessException {
         super("Ola mundo!");
