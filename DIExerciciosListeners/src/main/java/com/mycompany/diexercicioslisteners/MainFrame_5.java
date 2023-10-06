@@ -12,7 +12,6 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPasswordField;
-import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 
 public class MainFrame_5 extends JFrame {
@@ -20,7 +19,6 @@ public class MainFrame_5 extends JFrame {
 
     private JPasswordField pwdField;
     private JButton sumarButton;
-    private int contador = 0;
 
     public MainFrame_5() throws HeadlessException {
         super("Ola mundo!");
@@ -31,12 +29,7 @@ public class MainFrame_5 extends JFrame {
         ActionListener al = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                char[] pwd = pwdField.getPassword();
-                String pwdS = "";
-
-                for (int i = 0; i < pwd.length; i++) {
-                    pwdS = pwdS + pwd[i] + "";
-                }
+                String pwdS = new String(pwdField.getPassword());
 
                 if (pwdS.equals("abc123.")) {
                     getContentPane().setBackground(Color.GREEN);

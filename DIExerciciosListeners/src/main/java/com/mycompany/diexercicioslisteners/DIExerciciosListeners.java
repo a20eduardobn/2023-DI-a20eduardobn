@@ -19,7 +19,7 @@ public class DIExerciciosListeners {
             @Override
             public void run() {
                 try {
-                    MainFrame_9 frame = new MainFrame_9();
+                    MainFrame_10 frame = new MainFrame_10();
                 } catch (HeadlessException ex) {
                     Logger.getLogger(DIExerciciosListeners.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (ParseException ex) {

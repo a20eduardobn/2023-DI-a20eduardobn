@@ -11,6 +11,7 @@ import java.awt.event.ActionListener;
 import java.text.DateFormat;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
@@ -41,14 +42,15 @@ public class MainFrame_8 extends JFrame {
         };
 
         NumberFormat formatNums = NumberFormat.getInstance();
-        DateFormat formatDate = new SimpleDateFormat("yyyy-MM-dd");
+        DateFormat formatDate = new SimpleDateFormat("dd/MM/yyyy");
+        LocalDate local = LocalDate.now();
 
         txtFieldNums = new JFormattedTextField(formatNums);
         txtFieldNums.setColumns(20);
         txtFieldNums.setText("5400");
         txtFieldDates = new JFormattedTextField(formatDate);
         txtFieldDates.setColumns(20);
-        txtFieldDates.setText("2022-10-24");
+        txtFieldDates.setText(local.getDayOfMonth() + "/" + local.getMonthValue() + "/" + local.getYear());
         labelNums = new JLabel("Numeros");
         labelDates = new JLabel("Dates");
         printButton = new JButton("Imprimir");

@@ -19,7 +19,7 @@ public class MainFrame_9 extends JFrame {
 
     // Declarar os compoñentes como variables privadas de instancia
     private JFormattedTextField txtFieldNums;
-    private JLabel labelDates;
+    private JLabel labelCodPos;
 
     public MainFrame_9() throws HeadlessException, ParseException {
         super("Ola mundo!");
@@ -29,7 +29,7 @@ public class MainFrame_9 extends JFrame {
         ActionListener al = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                labelDates.setText(txtFieldNums.getText());
+                labelCodPos.setText(txtFieldNums.getText());
             }
         };
 
@@ -39,9 +39,9 @@ public class MainFrame_9 extends JFrame {
         txtFieldNums.setColumns(10);
         txtFieldNums.setText("54005");
         txtFieldNums.addActionListener(al);
-        labelDates = new JLabel("Codigo Postal");
+        labelCodPos = new JLabel("Codigo Postal");
 
-        add(labelDates);
+        add(labelCodPos);
         add(txtFieldNums);
 
         setSize(600, 500);

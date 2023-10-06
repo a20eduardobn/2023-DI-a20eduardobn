@@ -38,6 +38,7 @@ public class MainFrame_4 extends JFrame {
         sumarButton = new JButton("Presioname");
         reiniciarButton = new JButton("Reiniciar");
         num1Field = new JTextField(8);
+        num1Field.setEditable(false);
         num1Field.setText(contador + "");
         sumarButton.addActionListener(al);
         reiniciarButton.addActionListener(al);
