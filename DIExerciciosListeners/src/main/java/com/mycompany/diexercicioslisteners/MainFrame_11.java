@@ -5,9 +5,13 @@
 package com.mycompany.diexercicioslisteners;
 
 import java.awt.BorderLayout;
+import java.awt.CardLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.HeadlessException;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.text.ParseException;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -17,7 +21,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.WindowConstants;
 
-public class MainFrame_10 extends JFrame {
+public class MainFrame_11 extends JFrame {
 
     // Declarar os compoñentes como variables privadas de instancia
     private JButton funcionButton1;
@@ -31,10 +35,9 @@ public class MainFrame_10 extends JFrame {
     private JButton funcionButton9;
     private JButton funcionButton10;
     private JLabel etiquetaLabel1;
-    private JTextArea campoTextArea;
     private JLabel etiquetaLabel2;
 
-    public MainFrame_10() throws HeadlessException, ParseException {
+    public MainFrame_11() throws HeadlessException, ParseException {
         super("Ola mundo!");
         // Establecer o Layout
         setLayout(new BorderLayout());
@@ -44,25 +47,23 @@ public class MainFrame_10 extends JFrame {
         myPanel.setLayout(new GridLayout(5, 1));
         add(myPanel, BorderLayout.LINE_START);
 
-
         JPanel myPanel2 = new JPanel();
         myPanel2.setLayout(new GridLayout(5, 1));
         add(myPanel2, BorderLayout.LINE_END);
 
-
-        funcionButton1 = new JButton("Jbutton1");
+        funcionButton1 = new JButton("Siguiente");
         myPanel.add(funcionButton1);
 
-        funcionButton2 = new JButton("Jbutton2");
+        funcionButton2 = new JButton("Primera");
         myPanel.add(funcionButton2);
 
-        funcionButton3 = new JButton("Jbutton3");
+        funcionButton3 = new JButton("Segunda");
         myPanel.add(funcionButton3);
 
-        funcionButton4 = new JButton("Jbutton4");
+        funcionButton4 = new JButton("Tercera");
         myPanel.add(funcionButton4);
 
-        funcionButton5 = new JButton("Jbutton5");
+        funcionButton5 = new JButton("Anterior");
         myPanel.add(funcionButton5);
 
         funcionButton6 = new JButton("Jbutton6");
@@ -83,14 +84,52 @@ public class MainFrame_10 extends JFrame {
         etiquetaLabel1 = new JLabel("Titulo de proba");
         add(etiquetaLabel1, BorderLayout.NORTH);
 
-
         etiquetaLabel2 = new JLabel("eduardobn");
         add(etiquetaLabel2, BorderLayout.SOUTH);
 
+        JPanel cards = new JPanel();
+        CardLayout cl = new CardLayout();
+        cards.setLayout(cl);
+        add(cards, BorderLayout.CENTER);
 
-        campoTextArea = new JTextArea(5, 20);
-        add(campoTextArea, BorderLayout.CENTER);
+        JPanel card1 = new JPanel();
+        card1.setBackground(Color.red);
+        JPanel card2 = new JPanel();
+        card2.setBackground(Color.green);
+        JPanel card3 = new JPanel();
+        card3.setBackground(Color.cyan);
 
+        ActionListener al = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                if (ae.getSource().equals(funcionButton1)) {
+                    cl.next(cards);
+                }
+                if (ae.getSource().equals(funcionButton2)) {
+                    cl.first(cards);
+                }
+                if (ae.getSource().equals(funcionButton3)) {
+                    cl.first(cards);
+                    cl.next(cards);
+                }
+                if (ae.getSource().equals(funcionButton4)) {
+                    cl.last(cards);
+                }
+                if (ae.getSource().equals(funcionButton5)) {
+                    cl.previous(cards);
+                }
+            }
+        };
+
+        funcionButton1.addActionListener(al);
+        funcionButton2.addActionListener(al);
+        funcionButton3.addActionListener(al);
+        funcionButton4.addActionListener(al);
+        funcionButton5.addActionListener(al);
+
+        cards.add(card1);
+        cards.add(card2);
+        cards.add(card3);
 
         setSize(600, 500);
         setLocationRelativeTo(null);
