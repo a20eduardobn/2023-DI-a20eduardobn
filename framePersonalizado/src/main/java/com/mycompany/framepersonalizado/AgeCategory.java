@@ -17,6 +17,10 @@ public class AgeCategory {
         this.text = text;
     }
 
+    public int getId() {
+        return id;
+    }
+
     @Override
     public String toString() {
         return text;

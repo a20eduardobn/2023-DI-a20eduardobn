@@ -19,11 +19,9 @@ public class DIExerciciosListeners {
             @Override
             public void run() {
                 try {
-                    MainFrame_15 frame = new MainFrame_15();
-                } catch (HeadlessException ex) {
-                    Logger.getLogger(DIExerciciosListeners.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (ParseException ex) {
-                    Logger.getLogger(DIExerciciosListeners.class.getName()).log(Level.SEVERE, null, ex);
+                    new MainFrame_20();
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
                 }
             }
         });
