@@ -2,7 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.mycompany.framepersonalizado;
+package com.mycompany.gui;
+
+import com.mycompany.controller.Controller;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -30,35 +32,53 @@ public class MainFrame extends JFrame {
     private JMenu menuWindow;
     private JMenu menuItemShow;
     private JCheckBoxMenuItem menucheckPerson;
+    private Controller controller;
 
     public MainFrame() throws HeadlessException, ParseException {
-        super("Ola Mundo!");
+        super("Formulario");
 // Establecer o Layout
         setLayout(new BorderLayout());
 // Inicializar os compoñentes
+        controller = new Controller();
         textPanel = new TextPanel();
         myToolBar = new Toolbar();
         panelFormulario = new FormPanel();
 
+
+
         StringListener sl = new StringListener() {
             @Override
             public void textEmitted(StringEvent se) {
+                controller.addPerson(se);
                 textPanel.appendText(se.getText());
             }
         };
 
-        ActionListener al = new ActionListener() {
+        ActionListener alButtonAceptar = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 textPanel.appendText("Hola mundo\n");
             }
         };
 
-        ActionListener al2 = new ActionListener() {
+        ActionListener alSalirMenu = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 int opt = JOptionPane.showConfirmDialog(MainFrame.this, "Queres sair do programa?", "Salir", JOptionPane.YES_NO_OPTION);
                 if (opt == JOptionPane.OK_OPTION)System.exit(0);
+            }
+        };
+
+        ActionListener alExportImport = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                JFileChooser fc = new JFileChooser();
+                fc.addChoosableFileFilter(new PersonFileFilter());
+                if (actionEvent.getSource()==menuItemExport){
+                    fc.showSaveDialog(MainFrame.this);
+                } else {
+                    fc.showOpenDialog(MainFrame.this);
+                }
             }
         };
 
@@ -78,7 +98,7 @@ public class MainFrame extends JFrame {
         aceptarButton = new JButton("Aceptar");
 
         // engadir os compoñentes
-        aceptarButton.addActionListener(al);
+        aceptarButton.addActionListener(alButtonAceptar);
         add(panelFormulario, BorderLayout.WEST);
         add(myToolBar, BorderLayout.NORTH);
         add(textPanel, BorderLayout.CENTER);
@@ -86,7 +106,9 @@ public class MainFrame extends JFrame {
 
         createMenuBar();
         menucheckPerson.addItemListener(ilMenu);
-        menuItemExit.addActionListener(al2);
+        menuItemExit.addActionListener(alSalirMenu);
+        menuItemImport.addActionListener(alExportImport);
+        menuItemExport.addActionListener(alExportImport);
         setJMenuBar(menuBar);
 
         setSize(600, 500);

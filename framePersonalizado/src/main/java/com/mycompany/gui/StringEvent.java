@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.mycompany.framepersonalizado;
+package com.mycompany.gui;
 
 import java.util.EventObject;
 
@@ -18,14 +18,18 @@ public class StringEvent extends EventObject {
     private String employmentStatus;
     private String gendervalue;
     private String message;
+    private String taxId;
+    private boolean isUs;
 
-    public StringEvent(Object source, String name, String occupation, int idIdade, String employmentStatus, String gendervalue) {
+    public StringEvent(Object source, String name, String occupation, int idIdade, String employmentStatus, String gendervalue, String taxId, boolean isUs) {
         super(source);
         this.name = name;
         this.occupation = occupation;
         this.idIdade = idIdade;
         this.employmentStatus = employmentStatus;
         this.gendervalue = gendervalue;
+        this.taxId = taxId;
+        this.isUs = isUs;
     }
 
     public StringEvent(Object source) {
@@ -83,9 +87,25 @@ public class StringEvent extends EventObject {
         this.gendervalue = gendervalue;
     }
 
+    public String getTaxId() {
+        return taxId;
+    }
+
+    public void setTaxId(String taxId) {
+        this.taxId = taxId;
+    }
+
+    public boolean isUs() {
+        return isUs;
+    }
+
+    public void setUs(boolean us) {
+        isUs = us;
+    }
+
     public String getText() {
         if (message==null) {
-            return name + " : " + occupation + " : " + idIdade + " : " + employmentStatus + " : " + gendervalue+'\n';
+            return name + " : " + occupation + " : " + idIdade + " : " + employmentStatus + " : " + taxId + " : " + isUs + " : " + gendervalue+'\n';
         } else {
             return message+'\n';
         }
