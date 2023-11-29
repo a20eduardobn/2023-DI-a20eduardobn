@@ -7,52 +7,56 @@ package com.mycompany.gui;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JButton;
-import javax.swing.JPanel;
+import java.net.URL;
+import javax.swing.*;
 
 /**
  *
  * @author a20eduardobn
  */
-public class Toolbar extends JPanel {
+public class Toolbar extends JToolBar {
 
-    private JButton botonHello;
-    private JButton botonGbye;
-    private StringListener strListener;
+    private JButton botonImport;
+    private JButton botonSave;
+    private ToolbarListener toolbarListener;
 
     public Toolbar() {
-        FlowLayout fl = new FlowLayout();
-        fl.setAlignment(FlowLayout.LEFT);
-        setLayout(fl);
-        botonHello = new JButton("Hello");
-        botonGbye = new JButton("Goodbye");
-        
+        botonImport = new JButton();
+        botonImport.setIcon(getIcon("/general/Import16.gif"));
+        botonImport.setToolTipText("Import a save file");
 
+        botonSave = new JButton();
+        botonSave.setIcon(getIcon("/general/Save16.gif"));
+        botonSave.setToolTipText("Save data to file");
         ActionListener al = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JButton clickedButton = (JButton) e.getSource();
-                if (clickedButton == botonHello) {
-                    if (strListener != null) {
-                        StringEvent se = new StringEvent(this, "Hello");
-                        strListener.textEmitted(se);
+                ToolbarEvent te = new ToolbarEvent(Toolbar.this);
+                if (toolbarListener!=null) {
+                    if (clickedButton == botonImport) {
+                        te.setActionCommand("Import");
+                    } else if (clickedButton == botonSave) {
+                        te.setActionCommand("Save");
                     }
-                } else if (clickedButton == botonGbye) {
-                    if (strListener != null) {
-                        StringEvent se = new StringEvent(this, "Goodbye");
-                        strListener.textEmitted(se);
-                    }
+                    toolbarListener.toolbarActionPerformed(te);
                 }
             }
         };
-        botonHello.addActionListener(al);
-        botonGbye.addActionListener(al);
-        add(botonHello);
-        add(botonGbye);
+        botonImport.addActionListener(al);
+        botonSave.addActionListener(al);
+        add(botonImport);
+        add(botonSave);
     }
 
-    public void setStrListener(StringListener strListener) {
-        this.strListener = strListener;
+    public void setToolbarListener(ToolbarListener toolbarListener) {
+        this.toolbarListener = toolbarListener;
+    }
+
+    public Icon getIcon(String path){
+        URL url = getClass().getResource(path);
+        ImageIcon icon = new ImageIcon(url);
+        return icon;
     }
 
 }

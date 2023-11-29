@@ -3,6 +3,8 @@ package com.mycompany.controller;
 import com.mycompany.gui.StringEvent;
 import com.mycompany.model.*;
 
+import java.io.File;
+
 public class Controller {
     private Database db = new Database();
 
@@ -42,6 +44,29 @@ public class Controller {
         }
 
         Person person = new Person(name, occupation, ageCategory, empCategory, ev.getTaxId(), ev.isUs(), gender);
-        System.out.println(person);
+        db.addPerson(person);
+    }
+
+    public void removePerson(int index){
+        db.removePeople(index);
+    }
+
+    public void saveToFile(File file){
+        db.saveToFile(file);
+    }
+    public void loadFromFile(File file){
+        db.loadFromFile(file);
+    }
+
+    public Database getDb() {
+        return db;
+    }
+
+    public void setDb(Database db) {
+        this.db = db;
+    }
+
+    public EmploymentCategory[] getEmploymentCategories(){
+        return new EmploymentCategory[]{EmploymentCategory.EMPLOYED, EmploymentCategory.SELFEMPLOYED, EmploymentCategory.UNEMPLOYED, EmploymentCategory.OTHER};
     }
 }

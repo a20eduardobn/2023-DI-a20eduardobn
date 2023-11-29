@@ -3,11 +3,6 @@
  */
 package com.mycompany.diexercicioslisteners;
 
-import java.awt.HeadlessException;
-import java.text.ParseException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 /**
  *
  * @author a20eduardobn

@@ -1,6 +1,13 @@
 package com.mycompany.model;
 
-public class Person {
+import com.mycompany.controller.Controller;
+
+import java.io.Serial;
+import java.io.Serializable;
+
+public class Person implements Serializable {
+    @Serial
+    private static final long serialVersionUID = 1234L;
     private static int count = 0;
     private int id;
     private String name;

@@ -9,6 +9,7 @@
         <module name="OlaMundo" />
         <module name="framePersonalizado" />
         <module name="DIExerciciosListeners" />
+        <module name="DIColorTable" />
         <module name="primeiroProxecto" />
       </profile>
     </annotationProcessing>
