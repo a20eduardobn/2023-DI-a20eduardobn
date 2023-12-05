@@ -11,6 +11,7 @@ import java.awt.Dimension;
 import java.awt.HeadlessException;
 import java.awt.event.*;
 import java.text.ParseException;
+import java.util.prefs.Preferences;
 import javax.swing.*;
 
 /**
@@ -33,7 +34,10 @@ public class MainFrame extends JFrame {
     private Controller controller;
     private TablePanel tablepanel;
     private JSplitPane jspMain;
-
+    private JMenuItem menuItemFilter;
+    private JMenuItem menuItemPreferences;
+    private PreferencesListener preferencesListener;
+    private Preferences prefs = Preferences.userRoot().node(this.getClass().getName());
     public MainFrame() throws HeadlessException, ParseException {
         super("Formulario");
 // Establecer o Layout
@@ -45,9 +49,9 @@ public class MainFrame extends JFrame {
         panelFormulario = new FormPanel();
         tablepanel.setData(controller.getDb().getPeople());
 
-        StringListener sl = new StringListener() {
+        FormListener sl = new FormListener() {
             @Override
-            public void textEmitted(StringEvent se) {
+            public void formEmitted(FormEvent se) {
                 controller.addPerson(se);
                 tablepanel.setData(controller.getDb().getPeople());
                 tablepanel.refresh();
@@ -122,9 +126,45 @@ public class MainFrame extends JFrame {
             }
         };
 
+        ActionListener filterListener = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                String textoBusqueda = JOptionPane.showInputDialog("Escribe el parametro de busqueda");
+
+                tablepanel.getTable().setRowSorter(tablepanel.getSorter());
+                RowFilter<PersonTableModel, Object> rf = null;
+                //If current expression doesn't parse, don't update.
+                try {
+                    rf = RowFilter.regexFilter(textoBusqueda, 1);
+                } catch (java.util.regex.PatternSyntaxException e) {
+                    return;
+                }
+                tablepanel.getSorter().setRowFilter(rf);
+            }
+        };
+
+        preferencesListener = new PreferencesListener() {
+            @Override
+            public void buttonPressed(PreferencesEvent e) {
+                prefs.put("userPref", e.getUser());
+                prefs.put("passwdPref", e.getPasswd());
+                prefs.putInt("portPref", e.getPort());
+            }
+        };
+
+
+        ActionListener alMenuPreferences = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                PreferencesDialog dialog = new PreferencesDialog(MainFrame.this, "Preferences", false, prefs);
+                dialog.setDialogListener(preferencesListener);
+            }
+        };
+
+
         tablepanel.addPersonTableListener(personTableListener);
         topToolBar.setToolbarListener(toolbarListener);
-        panelFormulario.setStrListener(sl);
+        panelFormulario.setFormListener(sl);
         aceptarButton = new JButton("Aceptar");
 
         // engadir os compoñentes
@@ -144,6 +184,8 @@ public class MainFrame extends JFrame {
         menuItemExit.addActionListener(alSalirMenu);
         menuItemImport.addActionListener(alExportImport);
         menuItemExport.addActionListener(alExportImport);
+        menuItemFilter.addActionListener(filterListener);
+        menuItemPreferences.addActionListener(alMenuPreferences);
         setJMenuBar(menuBar);
 
         setSize(900, 500);
@@ -158,6 +200,7 @@ public class MainFrame extends JFrame {
         menuFile = new JMenu("File");
         menuItemExport = new JMenuItem("Export Data...");
         menuItemImport = new JMenuItem("Import Data...");
+        menuItemFilter = new JMenuItem("Filter...");
         menuItemExit = new JMenuItem("Exit");
 
         menuItemExport.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_E, ActionEvent.CTRL_MASK));
@@ -166,15 +209,19 @@ public class MainFrame extends JFrame {
         menuItemExit.setMnemonic('x');
         menuFile.add(menuItemExport);
         menuFile.add(menuItemImport);
+        menuFile.add(menuItemFilter);
         menuFile.addSeparator();
         menuFile.add(menuItemExit);
 
         menuWindow = new JMenu("Window");
         menuItemShow = new JMenu("Show");
+        menuItemPreferences = new JMenuItem("Preferences...");
+        menuItemPreferences.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_P, ActionEvent.CTRL_MASK));
         menucheckPerson = new JCheckBoxMenuItem("Person Form");
         menucheckPerson.setSelected(true);
         menuItemShow.add(menucheckPerson);
         menuWindow.add(menuItemShow);
+        menuWindow.add(menuItemPreferences);
 
         menuBar.add(menuFile);
         menuBar.add(menuWindow);

@@ -5,6 +5,7 @@ import com.mycompany.model.EmploymentCategory;
 import com.mycompany.model.Person;
 
 import javax.swing.*;
+import javax.swing.table.TableRowSorter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -19,9 +20,11 @@ public class TablePanel extends JPanel {
     private JMenuItem eliminarItem;
     private PersonTableListener personTableListener;
     private Controller controller;
+    private TableRowSorter sorter;
     public TablePanel(Controller controller) {
 
         this.controller=controller;
+
         eliminarMenu = new JPopupMenu();
         eliminarItem = new JMenuItem("Eliminar fila");
         eliminarMenu.add(eliminarItem);
@@ -33,6 +36,7 @@ public class TablePanel extends JPanel {
                 personTableModel.fireTableRowsDeleted(row, row);
             }
         });
+
 
         personTableModel = new PersonTableModel();
         table = new JTable(personTableModel);
@@ -64,10 +68,20 @@ public class TablePanel extends JPanel {
         table.setDefaultEditor(EmploymentCategory.class, new EmploymentCategoryEditor(controller));
         table.setRowHeight(25);
 
+        sorter = new TableRowSorter(personTableModel);
         setLayout(new BorderLayout());
         add(new JScrollPane(table),BorderLayout.CENTER);
 
     }
+
+    public JTable getTable() {
+        return table;
+    }
+
+    public TableRowSorter getSorter() {
+        return sorter;
+    }
+
     public void setData(List<Person> personList) {
         personTableModel.setData(personList);
     }

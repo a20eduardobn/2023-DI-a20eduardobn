@@ -36,7 +36,7 @@ public class FormPanel extends JPanel {
     private ButtonGroup btnGrp;
 
 
-    private StringListener strListener;
+    private FormListener formListener;
 
     public FormPanel() throws HeadlessException, ParseException {
         // Establecer o Layout
@@ -48,7 +48,6 @@ public class FormPanel extends JPanel {
         JPanel pane = new JPanel();
         JPanel line = new JPanel();
 
-        line.setBorder(BorderFactory.createTitledBorder("title"));
         Border innerBorder = BorderFactory.createTitledBorder("Add Person");
         Border outerBorder = BorderFactory.createEmptyBorder(5, 5, 5, 5);
         line.setBorder(BorderFactory.createCompoundBorder(outerBorder, innerBorder));
@@ -59,12 +58,12 @@ public class FormPanel extends JPanel {
         ActionListener al = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                if (strListener != null && !campoName.getText().equals("")) {
+                if (formListener != null && !campoName.getText().equals("")) {
                     String valorGender = maleRadioButton.isSelected() ? maleRadioButton.getText() : femaleRadioButton.getText();
-                    StringEvent strEvt = new StringEvent(this, campoName.getText(),
+                    FormEvent formEvent = new FormEvent(this, campoName.getText(),
                             campoOccup.getText(), ((AgeCategory) listaIdade.getSelectedValue()).getId(),
                             employmentBox.getSelectedItem().toString(), valorGender, taxIdField.getText(), usCitizenCheck.isSelected());
-                    strListener.textEmitted(strEvt);
+                    formListener.formEmitted(formEvent);
                 }
             }
         };
@@ -216,7 +215,7 @@ public class FormPanel extends JPanel {
 
     }
 
-    public void setStrListener(StringListener strListener) {
-        this.strListener = strListener;
+    public void setFormListener(FormListener formListener) {
+        this.formListener = formListener;
     }
 }

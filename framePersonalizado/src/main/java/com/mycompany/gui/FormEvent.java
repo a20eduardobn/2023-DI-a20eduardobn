@@ -10,7 +10,7 @@ import java.util.EventObject;
  *
  * @author a20eduardobn
  */
-public class StringEvent extends EventObject {
+public class FormEvent extends EventObject {
 
     private String name;
     private String occupation;
@@ -21,7 +21,7 @@ public class StringEvent extends EventObject {
     private String taxId;
     private boolean isUs;
 
-    public StringEvent(Object source, String name, String occupation, int idIdade, String employmentStatus, String gendervalue, String taxId, boolean isUs) {
+    public FormEvent(Object source, String name, String occupation, int idIdade, String employmentStatus, String gendervalue, String taxId, boolean isUs) {
         super(source);
         this.name = name;
         this.occupation = occupation;

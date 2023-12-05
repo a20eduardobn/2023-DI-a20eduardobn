@@ -4,11 +4,13 @@
  */
 package com.mycompany.gui;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
 import com.mycompany.controller.Controller;
 import com.mycompany.model.EmploymentCategory;
+import com.mycompany.model.Gender;
 import com.mycompany.model.Person;
 
 /**
@@ -22,6 +24,7 @@ public class PersonTableModel extends AbstractTableModel {
         "Employment Category", "US Citizen", "Tax ID", "Gender"};
 
     public PersonTableModel() {
+        personList=new ArrayList<>();
     }
 
     public void setData(List<Person> personList) {
@@ -83,11 +86,13 @@ public class PersonTableModel extends AbstractTableModel {
 
     @Override
     public Class<?> getColumnClass(int columnIndex) {
-        if (columnIndex==5){
-            return Boolean.class;
-        } else if (columnIndex==4) {
-            return EmploymentCategory.class;
-        }
-        return String.class;
+        return switch (columnIndex){
+            case 0 -> Integer.class;
+            case 3 -> AgeCategory.class;
+            case 4 -> EmploymentCategory.class;
+            case 5 -> Boolean.class;
+            case 7 -> Gender.class;
+            default -> String.class;
+        };
     }
 }

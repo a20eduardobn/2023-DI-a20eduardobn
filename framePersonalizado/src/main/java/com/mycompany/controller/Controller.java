@@ -1,6 +1,6 @@
 package com.mycompany.controller;
 
-import com.mycompany.gui.StringEvent;
+import com.mycompany.gui.FormEvent;
 import com.mycompany.model.*;
 
 import java.io.File;
@@ -8,7 +8,7 @@ import java.io.File;
 public class Controller {
     private Database db = new Database();
 
-    public void addPerson(StringEvent ev){
+    public void addPerson(FormEvent ev){
         String name = ev.getName();
         String occupation = ev.getOccupation();
         String genderCat = ev.getGendervalue();
