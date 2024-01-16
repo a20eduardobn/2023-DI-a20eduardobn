@@ -15,43 +15,26 @@ import javax.swing.JButton;
  */
 public class JButtonColores extends JButton implements Serializable {
     
-    private Color corFondo;
-    private Color corTexto;
+    private Colores colores;
     
     public JButtonColores() {
     }
 
-    public JButtonColores(Color corFondo, Color corTexto) {
-        this.corFondo = corFondo;
-        this.corTexto = corTexto;
+    public Colores getColores() {
+        return colores;
     }
-    
-    public Color getCorFondo() {
-        return corFondo;
-    }
-    
-    public void setCorFondo(Color corFondo) {
-        this.corFondo = corFondo;
+
+    public void setColores(Colores colores) {
+        this.colores = colores;
         repaint();
     }
-    
-    public Color getCorTexto() {
-        return corTexto;
-    }
-    
-    public void setCorTexto(Color corTexto) {
-        this.corTexto = corTexto;
-        repaint();
-    }
-    
+
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        if (corFondo != null) {
-            super.setBackground(corFondo);
-        }
-        if (corTexto != null) {
-            super.setForeground(corTexto);
+        if (colores != null) {
+            super.setBackground(colores.getCorFondo());
+            super.setForeground(colores.getCorTexto());
         }
     }
     

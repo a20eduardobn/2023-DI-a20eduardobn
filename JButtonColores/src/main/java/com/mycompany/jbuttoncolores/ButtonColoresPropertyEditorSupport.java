@@ -27,8 +27,8 @@ public class ButtonColoresPropertyEditorSupport extends PropertyEditorSupport {
 
     @Override
     public String getJavaInitializationString() {
-        JButtonColores imaxeFondo = buttonColoresPanel.getSelectedValue();
-        return "new com.mycompany.JButtonColores(" + imaxeFondo.getCorFondo() + ", " + imaxeFondo.getCorTexto() + ")";
+        Colores colores = buttonColoresPanel.getSelectedValue();
+        return "new com.mycompany.JButtonColores(" + colores.getCorFondo() + ", " + colores.getCorTexto() + ")";
     }
 
     @Override

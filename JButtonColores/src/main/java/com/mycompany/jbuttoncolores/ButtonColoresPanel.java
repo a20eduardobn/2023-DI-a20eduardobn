@@ -5,7 +5,6 @@
 package com.mycompany.jbuttoncolores;
 
 import java.awt.Color;
-import java.io.File;
 import javax.swing.JColorChooser;
 
 /**
@@ -13,6 +12,9 @@ import javax.swing.JColorChooser;
  * @author a20eduardobn
  */
 public class ButtonColoresPanel extends javax.swing.JPanel {
+
+    private Color txtColor;
+    private Color bgColor;
 
     /**
      * Creates new form ButtonColoresPanel
@@ -41,6 +43,9 @@ public class ButtonColoresPanel extends javax.swing.JPanel {
 
         lblBgColor.setText("Cor fondo:");
 
+        txtTextColor.setEditable(false);
+
+        txtBgColor.setEditable(false);
         txtBgColor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtBgColorActionPerformed(evt);
@@ -103,17 +108,20 @@ public class ButtonColoresPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_txtBgColorActionPerformed
     
     private void btnTextColorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTextColorActionPerformed
-        Color c = JColorChooser.showDialog(this, "Choose color", Color.yellow);
-        lblTextColor.setText(c.getRGB() + "");
+        txtColor = JColorChooser.showDialog(this, "Choose color", Color.yellow);
+        txtTextColor.setText(txtColor.getRed() + " " + txtColor.getGreen() + " " + txtColor.getBlue());
     }//GEN-LAST:event_btnTextColorActionPerformed
 
     private void btnBgColorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBgColorActionPerformed
-        Color c = JColorChooser.showDialog(this, "Choose color", Color.yellow);
-        lblBgColor.setText(c.getRGB()+"");
+        bgColor = JColorChooser.showDialog(this, "Choose color", Color.yellow);
+        txtBgColor.setText(bgColor.getRed() + " " + bgColor.getGreen() + " " + bgColor.getBlue());
     }//GEN-LAST:event_btnBgColorActionPerformed
 
-    public JButtonColores getSelectedValue() {
-        return new JButtonColores(Color.getColor(lblBgColor.getText()), Color.getColor(lblTextColor.getText()));
+    public Colores getSelectedValue() {
+        if (txtTextColor.getText().isEmpty()){
+            return new Colores();
+        }
+        return new Colores(bgColor, txtColor);
     }
     
 

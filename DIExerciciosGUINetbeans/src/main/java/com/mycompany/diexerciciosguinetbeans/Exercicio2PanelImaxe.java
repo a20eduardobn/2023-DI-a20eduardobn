@@ -26,17 +26,12 @@ public class Exercicio2PanelImaxe extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButtonColores1 = new com.mycompany.jbuttoncolores.JButtonColores();
         jPanelImaxe4 = new com.mycompany.jpanelimaxe.JPanelImaxe();
         jPanelImaxe1 = new com.mycompany.jpanelimaxe.JPanelImaxe();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButtonColores1.setText("jButtonColores1");
-        jButtonColores1.setCorFondo(new java.awt.Color(255, 51, 0));
-        jButtonColores1.setCorTexto(new java.awt.Color(0, 51, 204));
-
-        jPanelImaxe4.setImaxeFondo(new com.mycompany.jpanelimaxe.ImaxeFondo(new java.io.File("/home/sanclemente.local/a20eduardobn/Descargas/download.png"), 0.27f));
+        jPanelImaxe4.setImaxeFondo(new com.mycompany.jpanelimaxe.ImaxeFondo(new java.io.File("/home/sanclemente.local/a20eduardobn"), 0.5f));
 
         javax.swing.GroupLayout jPanelImaxe4Layout = new javax.swing.GroupLayout(jPanelImaxe4);
         jPanelImaxe4.setLayout(jPanelImaxe4Layout);
@@ -69,23 +64,16 @@ public class Exercicio2PanelImaxe extends javax.swing.JFrame {
                 .addComponent(jPanelImaxe4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(74, 74, 74)
                 .addComponent(jPanelImaxe1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 275, Short.MAX_VALUE)
-                .addComponent(jButtonColores1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(87, 87, 87))
+                .addContainerGap(496, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(74, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButtonColores1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(57, 57, 57))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jPanelImaxe1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanelImaxe4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(39, 39, 39))))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanelImaxe1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanelImaxe4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(39, 39, 39))
         );
 
         pack();
@@ -127,7 +115,6 @@ public class Exercicio2PanelImaxe extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private com.mycompany.jbuttoncolores.JButtonColores jButtonColores1;
     private com.mycompany.jpanelimaxe.JPanelImaxe jPanelImaxe1;
     private com.mycompany.jpanelimaxe.JPanelImaxe jPanelImaxe4;
     // End of variables declaration//GEN-END:variables

@@ -28,9 +28,7 @@
               <Component id="jPanelImaxe4" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
               <Component id="jPanelImaxe1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="275" max="32767" attributes="0"/>
-              <Component id="jButtonColores1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
+              <EmptySpace pref="496" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -38,35 +36,16 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace pref="74" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <Component id="jButtonColores1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jPanelImaxe1" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="jPanelImaxe4" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-                  </Group>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="jPanelImaxe1" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Component id="jPanelImaxe4" min="-2" max="-2" attributes="0"/>
               </Group>
+              <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="com.mycompany.jbuttoncolores.JButtonColores" name="jButtonColores1">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jButtonColores1"/>
-        <Property name="corFondo" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="0" green="33" red="ff" type="rgb"/>
-        </Property>
-        <Property name="corTexto" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="cc" green="33" red="0" type="rgb"/>
-        </Property>
-      </Properties>
-    </Component>
     <Container class="com.mycompany.jpanelimaxe.JPanelImaxe" name="jPanelImaxe4">
       <Properties>
         <Property name="imaxeFondo" type="com.mycompany.jpanelimaxe.ImaxeFondo" editor="com.mycompany.jpanelimaxe.ImaxeFondoPropertyEditorSupport">
