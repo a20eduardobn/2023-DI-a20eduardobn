@@ -118,7 +118,7 @@ public class ButtonColoresPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnBgColorActionPerformed
 
     public Colores getSelectedValue() {
-        if (txtTextColor.getText().isEmpty()){
+        if (txtColor == null || bgColor == null) {
             return new Colores();
         }
         return new Colores(bgColor, txtColor);

@@ -4,6 +4,7 @@
  */
 package com.mycompany.jbuttoncolores;
 
+import java.awt.Color;
 import java.awt.Component;
 import java.beans.PropertyEditorSupport;
 
@@ -28,7 +29,12 @@ public class ButtonColoresPropertyEditorSupport extends PropertyEditorSupport {
     @Override
     public String getJavaInitializationString() {
         Colores colores = buttonColoresPanel.getSelectedValue();
-        return "new com.mycompany.JButtonColores(" + colores.getCorFondo() + ", " + colores.getCorTexto() + ")";
+        Color corFondo = colores.getCorFondo();
+        Color corTexto = colores.getCorTexto();
+        return "new com.mycompany.jbuttoncolores.Colores(" + " new java.awt.Color("
+                + corFondo.getRed() + "," + corFondo.getGreen() + "," + corFondo.getBlue()
+                + ")" + ", new java.awt.Color("
+                + corTexto.getRed() + "," + corTexto.getGreen() + "," + corTexto.getBlue() + "))";
     }
 
     @Override
