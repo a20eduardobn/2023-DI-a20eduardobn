@@ -4,8 +4,8 @@
 
 package com.mycompany.jbuttoncolores;
 
-import java.awt.Color;
-import java.awt.Graphics;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.io.Serializable;
 import javax.swing.JButton;
 
@@ -16,8 +16,32 @@ import javax.swing.JButton;
 public class JButtonColores extends JButton implements Serializable {
     
     private Colores colores;
+    private Colores coloresHover;
     
     public JButtonColores() {
+        addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent me) {
+            }
+
+            @Override
+            public void mousePressed(MouseEvent me) {
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent me) {
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent me) {
+                applyHoverColors();
+            }
+
+            @Override
+            public void mouseExited(MouseEvent me) {
+                applyDefaultColors();
+            }
+        });
     }
 
     public Colores getColores() {
@@ -26,16 +50,36 @@ public class JButtonColores extends JButton implements Serializable {
 
     public void setColores(Colores colores) {
         this.colores = colores;
-        repaint();
+        applyDefaultColors();
     }
 
-    @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        if (colores != null) {
-            super.setBackground(colores.getCorFondo());
-            super.setForeground(colores.getCorTexto());
+    public Colores getColoresHover() {
+        return coloresHover;
+    }
+
+    public void setColoresHover(Colores coloresHover) {
+        this.coloresHover = coloresHover;
+    }
+
+    private void applyHoverColors() {
+        if (coloresHover != null) {
+            setBackground(coloresHover.getCorFondo());
+            setForeground(coloresHover.getCorTexto());
+            repaint();
         }
+    }
+
+    private void applyDefaultColors() {
+        if (colores != null) {
+            setBackground(colores.getCorFondo());
+            setForeground(colores.getCorTexto());
+            repaint();
+        } else {
+            setBackground(new JButton().getBackground());
+            setForeground(new JButton().getForeground());
+            repaint();
+        }
+        
     }
     
 }

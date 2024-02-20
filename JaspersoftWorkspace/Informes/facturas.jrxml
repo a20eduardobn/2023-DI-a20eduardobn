@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.21.0.final using JasperReports Library version 6.21.0-4f56c4f36cd19e17675219a9ac4692d5f0f13b06  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="facturas" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4d5a9800-28a7-44a9-9f40-fcfa2d0855f8">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DataAdapter.jrdax"/>
+	<parameter name="idFactura" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT o.CUSTOMERID as idCliente, o.ORDERID, o.EMPLOYEEID, o.SHIPPERID, p.PRICE , d.QUANTITY, p.PRODUCTNAME
+FROM orders o, orderdetails d, products p
+WHERE o.ORDERID = d.ORDERID and d.PRODUCTID = p.PRODUCTID and o.orderid =
+$P{idFactura}]]>
+	</queryString>
+	<field name="IDCLIENTE" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="CUSTOMERID"/>
+		<property name="com.jaspersoft.studio.field.label" value="IDCLIENTE"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ORDERS"/>
+	</field>
+	<field name="ORDERID" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="ORDERID"/>
+		<property name="com.jaspersoft.studio.field.label" value="ORDERID"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ORDERS"/>
+	</field>
+	<field name="EMPLOYEEID" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="EMPLOYEEID"/>
+		<property name="com.jaspersoft.studio.field.label" value="EMPLOYEEID"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ORDERS"/>
+	</field>
+	<field name="SHIPPERID" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="SHIPPERID"/>
+		<property name="com.jaspersoft.studio.field.label" value="SHIPPERID"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ORDERS"/>
+	</field>
+	<field name="PRICE" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="PRICE"/>
+		<property name="com.jaspersoft.studio.field.label" value="PRICE"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="PRODUCTS"/>
+	</field>
+	<field name="QUANTITY" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="QUANTITY"/>
+		<property name="com.jaspersoft.studio.field.label" value="QUANTITY"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ORDERDETAILS"/>
+	</field>
+	<field name="PRODUCTNAME" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="PRODUCTNAME"/>
+		<property name="com.jaspersoft.studio.field.label" value="PRODUCTNAME"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="PRODUCTS"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="-10" y="30" width="100" height="30" uuid="33aec0a3-7aa1-4e94-88f8-82b20285d76d">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ddb0149e-2f81-4807-aafa-ce3c523717bb"/>
+				</reportElement>
+				<text><![CDATA[ORDERID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="30" width="100" height="30" uuid="365fda09-f558-4dd1-b4e5-f385ae6b3bdb">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="3d7aa45e-a681-4b04-962c-30ce31330021"/>
+				</reportElement>
+				<text><![CDATA[PRODUCTNAME]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="110" splitType="Stretch">
+			<textField>
+				<reportElement x="-10" y="0" width="100" height="30" uuid="e745f452-7ba5-46f8-a1b1-d45a9c062c94">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ddb0149e-2f81-4807-aafa-ce3c523717bb"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{ORDERID}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="0" width="100" height="30" uuid="098dd76d-0cd2-4ace-91a0-0f89286e95b9">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="3d7aa45e-a681-4b04-962c-30ce31330021"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{PRODUCTNAME}]]></textFieldExpression>
+			</textField>
+			<subreport>
+				<reportElement x="200" y="-19" width="200" height="110" uuid="0b06a245-a05a-479a-a3a7-98bb208a43b6"/>
+				<subreportParameter name="employeeId">
+					<subreportParameterExpression><![CDATA[$F{EMPLOYEEID}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["subinformeEmployee.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+</jasperReport>

@@ -32,9 +32,8 @@ public class ButtonColoresPropertyEditorSupport extends PropertyEditorSupport {
         Color corFondo = colores.getCorFondo();
         Color corTexto = colores.getCorTexto();
         return "new com.mycompany.jbuttoncolores.Colores(" + " new java.awt.Color("
-                + corFondo.getRed() + "," + corFondo.getGreen() + "," + corFondo.getBlue()
-                + ")" + ", new java.awt.Color("
-                + corTexto.getRed() + "," + corTexto.getGreen() + "," + corTexto.getBlue() + "))";
+                + corFondo.getRGB() + ")" + ", new java.awt.Color("
+                + corTexto.getRGB() + "))";
     }
 
     @Override

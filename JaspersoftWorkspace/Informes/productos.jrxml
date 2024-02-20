@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.21.0.final using JasperReports Library version 6.21.0-4f56c4f36cd19e17675219a9ac4692d5f0f13b06  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="eb951304-148e-44cb-b0ec-43ff44a8005d">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DataAdapter.jrdax"/>
+	<queryString language="SQL">
+		<![CDATA[Select * from PRODUCTS]]>
+	</queryString>
+	<field name="PRODUCTID" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="PRODUCTID"/>
+		<property name="com.jaspersoft.studio.field.label" value="PRODUCTID"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="PRODUCTS"/>
+	</field>
+	<field name="PRODUCTNAME" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="PRODUCTNAME"/>
+		<property name="com.jaspersoft.studio.field.label" value="PRODUCTNAME"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="PRODUCTS"/>
+	</field>
+	<field name="SUPPLIERID" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="SUPPLIERID"/>
+		<property name="com.jaspersoft.studio.field.label" value="SUPPLIERID"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="PRODUCTS"/>
+	</field>
+	<field name="CATEGORYID" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="CATEGORYID"/>
+		<property name="com.jaspersoft.studio.field.label" value="CATEGORYID"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="PRODUCTS"/>
+	</field>
+	<field name="UNIT" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="UNIT"/>
+		<property name="com.jaspersoft.studio.field.label" value="UNIT"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="PRODUCTS"/>
+	</field>
+	<field name="PRICE" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="PRICE"/>
+		<property name="com.jaspersoft.studio.field.label" value="PRICE"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="PRODUCTS"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="19" y="0" width="100" height="30" uuid="c902d55d-4d30-49eb-b2e4-6a54441fc8f5">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="73a51166-b7d3-455e-8a84-c1dd7bea2f1c"/>
+				</reportElement>
+				<text><![CDATA[PRODUCTNAME]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="144" y="0" width="100" height="30" uuid="ca1a61db-8051-47d1-a489-fbb903125887">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f0ead754-b508-4b79-a7d2-f9362f441dfe"/>
+				</reportElement>
+				<text><![CDATA[UNIT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="270" y="0" width="100" height="30" uuid="c05c7ccf-8c17-4a4c-aafa-836ffb9e761a">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0b9f3d08-2752-47a9-a0a6-73ce446585b2"/>
+				</reportElement>
+				<text><![CDATA[PRICE]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement x="19" y="54" width="100" height="30" uuid="ab70ed61-dfb1-4309-8301-728ac085ce8d">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="73a51166-b7d3-455e-8a84-c1dd7bea2f1c"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{PRODUCTNAME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="144" y="54" width="100" height="30" uuid="51b2f985-f333-41da-b43d-3fb39cfcc4ab">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f0ead754-b508-4b79-a7d2-f9362f441dfe"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{UNIT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="270" y="54" width="100" height="30" uuid="e35646ac-3715-4518-80c3-afe247725861">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0b9f3d08-2752-47a9-a0a6-73ce446585b2"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{PRICE}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
