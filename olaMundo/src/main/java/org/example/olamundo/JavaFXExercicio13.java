@@ -15,7 +15,6 @@ public class JavaFXExercicio13 extends Application {
         Rectangle rtg = new Rectangle(100,150, Color.AQUA);
         VBox vBox = new VBox(rtg);
         Pane pane = new Pane(rtg);
-        
         Scene sc = new Scene(vBox,300,200);
         stage.setScene(sc);
         stage.show();
