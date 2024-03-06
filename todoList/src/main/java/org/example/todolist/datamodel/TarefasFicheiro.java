@@ -1,6 +1,7 @@
 package org.example.todolist.datamodel;
 
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -11,13 +12,12 @@ import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Iterator;
-import java.util.List;
 
 public class TarefasFicheiro {
     // creación dunha instancia da clase
     private static TarefasFicheiro instance = new TarefasFicheiro();
     private static String filename = "tarefas.txt";
-    private List<Tarefa> tarefas;
+    private ObservableList<Tarefa> tarefas;
     private DateTimeFormatter formatter;
 
     private TarefasFicheiro() {
@@ -28,7 +28,7 @@ public class TarefasFicheiro {
         return instance;
     }
 
-    public List<Tarefa> getTarefas() {
+    public ObservableList<Tarefa> getTarefas() {
         return tarefas;
     }
 
@@ -70,5 +70,9 @@ public class TarefasFicheiro {
         } finally {
             bw.close();
         }
+    }
+
+    public void borrarTarefa(Tarefa tarefa) {
+        tarefas.remove(tarefa);
     }
 }

@@ -15,6 +15,12 @@ public class NovaTarefaDialogoController {
     @FXML
     private DatePicker deadlineDate;
 
+    public void inicializarCampos(Tarefa tarefa){
+        deadlineDate.setValue(tarefa.getDataLimite());
+        detallesArea.setText(tarefa.getDetalles());
+        descricionField.setText(tarefa.getDescricion());
+    }
+
     public Tarefa procesarResultados(){
         Tarefa tarefa = new Tarefa(descricionField.getText(),detallesArea.getText(),deadlineDate.getValue());
         TarefasFicheiro.getInstance().engadirTarefa(tarefa);

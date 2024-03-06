@@ -10,14 +10,22 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.control.Button?>
 <BorderPane fx:id="mainBorderPane" xmlns:fx="http://javafx.com/fxml" fx:controller="org.example.todolist.Controller">
     <top>
-    <MenuBar>
-        <Menu text="Ficheiro">
-            <MenuItem text="Novo..." onAction="#mostrarDialogoNovaTarefa"/>
-            <MenuItem text="Saír" onAction="#sairAplicacion"/>
-        </Menu>
-    </MenuBar>
+        <VBox>
+            <MenuBar>
+                <Menu text="Ficheiro">
+                    <MenuItem text="Novo..." onAction="#mostrarDialogoNovaTarefa"/>
+                    <MenuItem text="Saír" onAction="#sairAplicacion"/>
+                </Menu>
+            </MenuBar>
+            <ToolBar>
+                <Button fx:id="btnToolbarNuevo" onAction="#mostrarDialogoNovaTarefa"/>
+            </ToolBar>
+        </VBox>
+
     </top>
     <left>
         <ListView fx:id="tarefasListView"/>
