@@ -25,7 +25,6 @@
                 <Button fx:id="btnToolbarNuevo" onAction="#mostrarDialogoNovaTarefa"/>
             </ToolBar>
         </VBox>
-
     </top>
     <left>
         <ListView fx:id="tarefasListView"/>

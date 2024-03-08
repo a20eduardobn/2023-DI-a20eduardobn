@@ -17,9 +17,6 @@ public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) {
 
-        final ObservableList<Contacto> listaContactos = FXCollections.observableArrayList(
-                new Contacto("Juan","Gomez","62456753","Nota de prueba")
-        );
 
         TableView tableView = new TableView();
         TableColumn<Contacto, String> column1 = new TableColumn<>("Nome");
@@ -34,11 +31,12 @@ public class HelloApplication extends Application {
         tableView.getColumns().add(column2);
         tableView.getColumns().add(column3);
         tableView.getColumns().add(column4);
-        tableView.setItems(listaContactos);
+        tableView.setItems(ListaContactos.listaContactos);
 
         MenuBar mb = new MenuBar();
         Menu menu = new Menu("Ficheiro");
         MenuItem menuitem = new MenuItem("Novo...");
+        menuitem.setOnAction(actionEvent -> new HelloController().mostrarDialogoCrearContacto());
 
         mb.getMenus().add(menu);
         menu.getItems().add(menuitem);
